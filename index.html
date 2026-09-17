@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Приведи друга на склад — зарабатывай без коробок</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1B18;
+    --charcoal:#232320;
+    --charcoal-2:#2C2C27;
+    --cream:#F4EFE3;
+    --cream-2:#ECE4D1;
+    --kraft:#C89B65;
+    --kraft-dark:#96703F;
+    --yellow:#F4BE1E;
+    --yellow-dark:#D9A50F;
+    --white:#FFFDF8;
+    --line:rgba(28,27,24,0.12);
+    --line-light:rgba(244,239,227,0.16);
+    --radius-s:4px;
+    --radius-m:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Manrope',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.font-display{
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    line-height:1.08;
+    margin:0;
+    letter-spacing:0.2px;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+
+  /* focus visibility */
+  a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{
+    outline:3px solid var(--yellow);
+    outline-offset:2px;
+  }
+
+  /* ---------- hazard stripe divider ---------- */
+  .hazard{
+    height:14px;
+    background:repeating-linear-gradient(
+      -45deg,
+      var(--yellow) 0 22px,
+      var(--ink) 22px 44px
+    );
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    background:var(--charcoal);
+    color:var(--cream);
+    position:sticky;
+    top:0;
+    z-index:40;
+    border-bottom:1px solid var(--line-light);
+  }
+  .topbar-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+    max-width:1120px;
+    margin:0 auto;
+    gap:16px;
+  }
+  .brand{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    white-space:nowrap;
+  }
+  .brand-mark{
+    width:30px;height:30px;flex:none;
+  }
+  .topbar-cta{
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:15px;
+    padding:12px 22px;
+    border-radius:var(--radius-s);
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-yellow{
+    background:var(--yellow);
+    color:var(--ink);
+  }
+  .btn-yellow:hover{background:var(--yellow-dark);}
+  .btn-outline{
+    background:transparent;
+    border-color:var(--cream);
+    color:var(--cream);
+  }
+  .btn-outline:hover{background:var(--line-light);}
+  .btn-outline-dark{
+    background:transparent;
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+  .btn-outline-dark:hover{background:rgba(28,27,24,0.06);}
+  .btn-sm{padding:9px 16px;font-size:14px;}
+  .btn-block{width:100%;}
+
+  .topbar-phone{
+    font-size:14px;
+    color:var(--cream-2);
+    display:none;
+  }
+  @media(min-width:860px){
+    .topbar-phone{display:inline;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--charcoal);
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+    padding:64px 0 76px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+  }
+  .hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(244,190,30,0.12);
+    border:1px solid rgba(244,190,30,0.45);
+    color:var(--yellow);
+    font-size:14px;
+    font-weight:700;
+    padding:7px 14px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(32px,4.6vw,54px);
+    color:var(--white);
+    max-width:15ch;
+  }
+  .hero h1 .accent{color:var(--yellow);}
+  .hero-sub{
+    margin-top:22px;
+    font-size:18px;
+    line-height:1.6;
+    color:var(--cream-2);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .hero-note{
+    margin-top:18px;
+    font-size:14px;
+    color:rgba(244,239,227,0.6);
+  }
+  .hero-stats{
+    margin-top:38px;
+    display:flex;
+    gap:32px;
+    flex-wrap:wrap;
+  }
+  .hero-stat b{
+    font-family:'Oswald',sans-serif;
+    font-size:30px;
+    display:block;
+    color:var(--yellow);
+  }
+  .hero-stat span{
+    font-size:14px;
+    color:var(--cream-2);
+  }
+  .hero-art{
+    position:relative;
+  }
+
+  /* ---------- section shells ---------- */
+  section{padding:72px 0;}
+  .section-cream{background:var(--cream);}
+  .section-cream-2{background:var(--cream-2);}
+  .section-dark{background:var(--charcoal);color:var(--white);}
+  .kicker{
+    font-size:15px;
+    font-weight:700;
+    color:var(--kraft-dark);
+    margin-bottom:10px;
+  }
+  .section-dark .kicker{color:var(--yellow);}
+  h2{font-size:clamp(26px,3.4vw,38px);}
+  .section-head{
+    max-width:640px;
+    margin-bottom:44px;
+  }
+  .section-head p{
+    margin-top:14px;
+    font-size:17px;
+    line-height:1.6;
+    color:#4A4A42;
+  }
+  .section-dark .section-head p{color:var(--cream-2);}
+
+  /* ---------- steps ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media(max-width:860px){
+    .steps{grid-template-columns:1fr;}
+  }
+  .step{
+    position:relative;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-m);
+    padding:30px 26px 26px;
+  }
+  .step-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;height:44px;
+    border:2px solid var(--ink);
+    border-radius:var(--radius-s);
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    font-size:20px;
+    transform:rotate(-3deg);
+    margin-bottom:18px;
+  }
+  .step h3{font-size:20px;margin-bottom:10px;}
+  .step p{font-size:15.5px;line-height:1.6;color:#4A4A42;}
+  .step-arrow{
+    display:none;
+  }
+  @media(min-width:861px){
+    .step:not(:last-child)::after{
+      content:"";
+      position:absolute;
+      right:-24px;
+      top:50%;
+      width:20px;height:20px;
+      transform:translateY(-50%) rotate(45deg);
+      border-top:2px solid var(--kraft);
+      border-right:2px solid var(--kraft);
+    }
+  }
+
+  /* ---------- calculator ---------- */
+  .calc-card{
+    background:var(--charcoal-2);
+    border:1px solid var(--line-light);
+    border-radius:var(--radius-m);
+    padding:36px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media(max-width:760px){
+    .calc-card{grid-template-columns:1fr;padding:26px 22px;}
+  }
+  .calc-label{
+    font-size:15px;
+    color:var(--cream-2);
+    margin-bottom:6px;
+  }
+  .calc-friends-value{
+    font-family:'Oswald',sans-serif;
+    font-size:22px;
+    color:var(--yellow);
+  }
+  input[type=range]{
+    width:100%;
+    margin:18px 0 6px;
+    accent-color:var(--yellow);
+  }
+  .calc-scale{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:rgba(244,239,227,0.55);
+  }
+  .calc-milestones{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .milestone-chip{
+    font-size:13px;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid var(--line-light);
+    color:var(--cream-2);
+  }
+  .milestone-chip.active{
+    background:var(--yellow);
+    color:var(--ink);
+    border-color:var(--yellow);
+    font-weight:700;
+  }
+  .calc-result{
+    text-align:center;
+    background:var(--ink);
+    border-radius:var(--radius-m);
+    padding:30px 20px;
+  }
+  .calc-result-label{
+    font-size:14px;
+    color:var(--cream-2);
+    margin-bottom:8px;
+  }
+  .calc-result-value{
+    font-family:'Oswald',sans-serif;
+    font-size:clamp(38px,6vw,56px);
+    color:var(--yellow);
+    line-height:1;
+  }
+  .calc-result-note{
+    margin-top:10px;
+    font-size:13.5px;
+    color:rgba(244,239,227,0.6);
+  }
+
+  /* ---------- earnings table (static reference) ---------- */
+  .earn-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:baseline;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    font-size:16px;
+  }
+  .earn-row:last-child{border-bottom:none;}
+  .earn-row b{
+    font-family:'Oswald',sans-serif;
+    font-size:22px;
+  }
+
+  /* ---------- warehouses ---------- */
+  .wh-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+  @media(max-width:860px){
+    .wh-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  .wh-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-m);
+    padding:24px 18px;
+    text-align:center;
+  }
+  .wh-card .wh-icon{
+    width:40px;height:40px;
+    margin:0 auto 14px;
+  }
+  .wh-card b{
+    font-family:'Oswald',sans-serif;
+    font-size:17px;
+    display:block;
+  }
+  .wh-card span{
+    font-size:13.5px;
+    color:#6b6a60;
+    display:block;
+    margin-top:4px;
+  }
+  .wh-card-link{
+    display:block;
+    transition:transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .wh-card-link:hover,
+  .wh-card-link:focus-visible{
+    transform:translateY(-3px);
+    border-color:var(--kraft);
+    box-shadow:0 10px 22px rgba(28,27,24,0.1);
+  }
+  .wh-card-cta{
+    margin-top:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--kraft-dark);
+  }
+  .wh-card-arrow{width:14px;height:14px;}
+  .wh-roles{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .role-chip{
+    font-size:14.5px;
+    font-weight:600;
+    padding:9px 16px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:999px;
+  }
+
+  /* ---------- conditions ---------- */
+  .cond-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  @media(max-width:860px){
+    .cond-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:560px){
+    .cond-grid{grid-template-columns:1fr;}
+  }
+  .cond-card{
+    background:var(--charcoal-2);
+    border:1px solid var(--line-light);
+    border-radius:var(--radius-m);
+    padding:24px;
+  }
+  .cond-icon{width:34px;height:34px;margin-bottom:16px;}
+  .cond-card h3{font-size:17.5px;margin-bottom:8px;color:var(--white);}
+  .cond-card p{font-size:14.5px;line-height:1.55;color:var(--cream-2);}
+
+  /* ---------- who fits ---------- */
+  .who-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:52px;
+    align-items:center;
+  }
+  @media(max-width:860px){
+    .who-wrap{grid-template-columns:1fr;gap:32px;}
+  }
+  .who-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .who-list li{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    font-size:16px;
+    line-height:1.55;
+  }
+  .who-list svg{flex:none;margin-top:3px;}
+
+  /* ---------- faq ---------- */
+  .faq-list{
+    max-width:760px;
+  }
+  details{
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
+  }
+  details:first-child{border-top:1px solid var(--line);}
+  summary{
+    cursor:pointer;
+    font-family:'Oswald',sans-serif;
+    font-size:18px;
+    font-weight:600;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  .faq-plus{
+    flex:none;
+    width:24px;height:24px;
+    position:relative;
+  }
+  .faq-plus::before,.faq-plus::after{
+    content:"";
+    position:absolute;
+    background:var(--ink);
+    transition:transform .2s ease;
+  }
+  .faq-plus::before{left:0;top:50%;width:100%;height:2px;transform:translateY(-50%);}
+  .faq-plus::after{top:0;left:50%;width:2px;height:100%;transform:translateX(-50%);}
+  details[open] .faq-plus::after{transform:translateX(-50%) rotate(90deg);opacity:0;}
+  details p{
+    margin-top:12px;
+    font-size:15.5px;
+    line-height:1.65;
+    color:#4A4A42;
+    max-width:64ch;
+  }
+
+  /* ---------- final cta ---------- */
+  .final{
+    background:var(--charcoal);
+    color:var(--white);
+    text-align:center;
+    padding:76px 0;
+  }
+  .final h2{
+    max-width:18ch;
+    margin:0 auto;
+    color:var(--white);
+  }
+  .final p{
+    margin:18px auto 0;
+    max-width:48ch;
+    font-size:17px;
+    color:var(--cream-2);
+    line-height:1.6;
+  }
+  .final-actions{
+    margin-top:34px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .final-contacts{
+    margin-top:26px;
+    font-size:15px;
+    color:rgba(244,239,227,0.7);
+  }
+  .final-contacts a{text-decoration:underline;text-underline-offset:3px;}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(244,239,227,0.65);
+    padding:36px 0 28px;
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+    padding-bottom:22px;
+    border-bottom:1px solid rgba(244,239,227,0.14);
+    margin-bottom:20px;
+  }
+  .footer-brand{
+    font-family:'Oswald',sans-serif;
+    color:var(--cream);
+    font-size:17px;
+    font-weight:600;
+  }
+  .footer-links{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+
+  /* ---------- floating mobile cta ---------- */
+  .floating-cta{
+    position:fixed;
+    left:16px;right:16px;bottom:16px;
+    z-index:50;
+    display:none;
+    background:var(--yellow);
+    color:var(--ink);
+    border-radius:var(--radius-m);
+    padding:14px 18px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.28);
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    font-weight:700;
+  }
+  @media(max-width:640px){
+    .floating-cta.show{display:flex;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .btn:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hazard" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="3" y="12" width="26" height="15" rx="1.5" fill="#F4BE1E"/>
+        <rect x="3" y="12" width="26" height="4" fill="#1C1B18"/>
+        <rect x="8" y="19" width="6" height="6" fill="#232320"/>
+        <rect x="18" y="19" width="6" height="6" fill="#232320"/>
+      </svg>
+      <span>Приведи друга на склад</span>
+    </div>
+    <div class="topbar-cta">
+      <span class="topbar-phone">+7 996 038‑77‑29</span>
+      <a class="btn btn-yellow btn-sm" href="http://t.me/rabota_referal_bot" target="_blank" rel="noopener">Регистрация в Telegram</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-badge">Не для соискателей — для тех, кто приводит людей</span>
+        <h1>Знакомь людей со складской работой — получай <span class="accent">10 000 ₽</span> за каждого</h1>
+        <p class="hero-sub">Склады СДЭК, Лемана ПРО, ДНС и ВкусВилл ищут сборщиков, комплектовщиков и грузчиков. Ты просто рассказываешь о вакансии знакомым и оформляешь их через бота — работать на складе самому не нужно.</p>
+        <div class="hero-actions">
+          <a class="btn btn-yellow" href="http://t.me/rabota_referal_bot" target="_blank" rel="noopener">Стать агентом в Telegram</a>
+          <a class="btn btn-outline" href="https://wa.me/79960387729" target="_blank" rel="noopener">Написать в WhatsApp</a>
+        </div>
+        <p class="hero-note">Бот для регистрации: t.me/rabota_referal_bot · MAX и WhatsApp: +7 996 038‑77‑29</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>10 000 ₽</b><span>за 1 друга, вышедшего на 10 смен</span></div>
+          <div class="hero-stat"><b>50 000 ₽</b><span>если привёл 5 человек</span></div>
+          <div class="hero-stat"><b>100 000 ₽</b><span>если привёл 10 человек</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Складская тележка с коробками и терминалом сбора данных">
+          <!-- shelf shadow -->
+          <ellipse cx="210" cy="352" rx="150" ry="16" fill="rgba(0,0,0,0.28)"/>
+          <!-- pallet -->
+          <g>
+            <rect x="70" y="300" width="220" height="14" fill="#C89B65"/>
+            <rect x="70" y="300" width="220" height="14" fill="url(#planks)" opacity="0.5"/>
+            <rect x="82" y="314" width="16" height="24" fill="#96703F"/>
+            <rect x="262" y="314" width="16" height="24" fill="#96703F"/>
+            <rect x="172" y="314" width="16" height="24" fill="#96703F"/>
+          </g>
+          <!-- boxes stack -->
+          <g>
+            <rect x="96" y="220" width="86" height="80" fill="#E7DCC3" stroke="#1C1B18" stroke-width="3"/>
+            <path d="M96 246 H182 M139 246 V300" stroke="#1C1B18" stroke-width="2"/>
+            <rect x="186" y="190" width="72" height="110" fill="#F4EFE3" stroke="#1C1B18" stroke-width="3"/>
+            <path d="M186 214 H258 M222 214 V300" stroke="#1C1B18" stroke-width="2"/>
+            <rect x="130" y="150" width="70" height="70" fill="#F4BE1E" stroke="#1C1B18" stroke-width="3"/>
+            <path d="M130 172 H200" stroke="#1C1B18" stroke-width="2"/>
+          </g>
+          <!-- hand truck -->
+          <g>
+            <rect x="300" y="120" width="10" height="188" fill="#1C1B18"/>
+            <rect x="300" y="112" width="70" height="10" fill="#1C1B18"/>
+            <circle cx="316" cy="330" r="20" fill="#232320"/>
+            <circle cx="316" cy="330" r="7" fill="#C89B65"/>
+            <circle cx="360" cy="330" r="20" fill="#232320"/>
+            <circle cx="360" cy="330" r="7" fill="#C89B65"/>
+            <rect x="300" y="292" width="76" height="14" fill="#96703F"/>
+          </g>
+          <!-- scanner terminal -->
+          <g>
+            <rect x="24" y="150" width="46" height="86" rx="6" fill="#232320" stroke="#F4BE1E" stroke-width="3"/>
+            <rect x="32" y="160" width="30" height="40" fill="#F4BE1E"/>
+            <circle cx="47" cy="212" r="6" fill="#F4EFE3"/>
+            <rect x="18" y="228" width="58" height="10" rx="3" fill="#96703F"/>
+          </g>
+          <defs>
+            <pattern id="planks" width="20" height="14" patternUnits="userSpaceOnUse">
+              <rect width="20" height="14" fill="none" stroke="#1C1B18" stroke-width="1"/>
+            </pattern>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-cream" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Как это устроено</p>
+        <h2>Три шага от знакомства до денег на карте</h2>
+        <p>Никаких сложных условий: находишь человека, он выходит на смены, тебе платят.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Находишь человека</h3>
+          <p>Друга, соседа, знакомого — любого, кто ищет подработку или постоянную работу без опыта и образования. Отправляешь ему ссылку на бота.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>Он выходит на склад</h3>
+          <p>Проходит быстрое оформление и отрабатывает 10 смен сборщиком, комплектовщиком или подсобным рабочим на одном из складов-партнёров.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>Деньги приходят тебе</h3>
+          <p>После 10 отработанных смен друга на твою карту зачисляют 10 000 ₽. Сам ты на складе можешь не появляться ни разу.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section-dark" id="calc">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Сколько можно заработать</p>
+        <h2>Считай сам: чем больше друзей — тем больше доход</h2>
+        <p>Выплата фиксированная и не зависит от того, сколько смен отработаешь ты сам — только от друзей, которых привёл.</p>
+      </div>
+
+      <div class="calc-card">
+        <div>
+          <p class="calc-label">Сколько друзей приводишь</p>
+          <span class="calc-friends-value" id="friendsValue">5 человек</span>
+          <input type="range" id="friendsRange" min="1" max="15" value="5" step="1" aria-describedby="friendsValue">
+          <div class="calc-scale"><span>1</span><span>15</span></div>
+          <div class="calc-milestones">
+            <span class="milestone-chip" data-n="1">1 друг — 10 000 ₽</span>
+            <span class="milestone-chip" data-n="5">5 друзей — 50 000 ₽</span>
+            <span class="milestone-chip" data-n="10">10 друзей — 100 000 ₽</span>
+          </div>
+        </div>
+        <div class="calc-result">
+          <p class="calc-result-label">Твой доход</p>
+          <p class="calc-result-value" id="calcResult">50 000 ₽</p>
+          <p class="calc-result-note">10 000 ₽ за каждого друга, отработавшего 10 смен</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAREHOUSES -->
+  <section class="section-cream" id="warehouses">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Куда устраиваются твои друзья</p>
+        <h2>Склады крупных сетей рядом с домом</h2>
+        <p>Партнёрская программа работает на площадках четырёх компаний — выбор склада зависит от города и вакансий, открытых сейчас.</p>
+      </div>
+      <div class="wh-grid">
+        <a class="wh-card wh-card-link" href="cdek-vidnoye.html">
+          <svg class="wh-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="14" width="28" height="20" fill="none" stroke="#1C1B18" stroke-width="2.5"/><path d="M6 14 L20 5 L34 14" fill="none" stroke="#1C1B18" stroke-width="2.5"/><rect x="16" y="22" width="8" height="12" fill="#F4BE1E"/></svg>
+          <b>СДЭК</b>
+          <span>Склады логистической компании</span>
+          <span class="wh-card-cta">Смотреть вакансию<svg class="wh-card-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8H14M14 8L9 3M14 8L9 13" fill="none" stroke="#96703F" stroke-width="1.6"/></svg></span>
+        </a>
+        <a class="wh-card wh-card-link" href="lemanapro-dmitrov.html">
+          <svg class="wh-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="10" width="24" height="24" fill="none" stroke="#1C1B18" stroke-width="2.5"/><path d="M8 20 H32 M20 10 V34" stroke="#1C1B18" stroke-width="2.5"/></svg>
+          <b>Лемана ПРО</b>
+          <span>Склады строительных товаров</span>
+          <span class="wh-card-cta">Смотреть вакансию<svg class="wh-card-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8H14M14 8L9 3M14 8L9 13" fill="none" stroke="#96703F" stroke-width="1.6"/></svg></span>
+        </a>
+        <a class="wh-card wh-card-link" href="dns-pushkino.html">
+          <svg class="wh-icon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14" fill="none" stroke="#1C1B18" stroke-width="2.5"/><path d="M20 10 V20 L27 25" stroke="#1C1B18" stroke-width="2.5" fill="none"/></svg>
+          <b>ДНС</b>
+          <span>Склады электроники</span>
+          <span class="wh-card-cta">Смотреть вакансию<svg class="wh-card-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8H14M14 8L9 3M14 8L9 13" fill="none" stroke="#96703F" stroke-width="1.6"/></svg></span>
+        </a>
+        <a class="wh-card wh-card-link" href="vkusvill-mytischi.html">
+          <svg class="wh-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="16" width="26" height="16" fill="none" stroke="#1C1B18" stroke-width="2.5"/><rect x="14" y="8" width="12" height="8" fill="none" stroke="#1C1B18" stroke-width="2.5"/></svg>
+          <b>ВкусВилл</b>
+          <span>Склады продуктового ритейлера</span>
+          <span class="wh-card-cta">Смотреть вакансию<svg class="wh-card-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8H14M14 8L9 3M14 8L9 13" fill="none" stroke="#96703F" stroke-width="1.6"/></svg></span>
+        </a>
+      </div>
+      <div class="wh-roles">
+        <span class="role-chip">Сборщик заказов</span>
+        <span class="role-chip">Комплектовщик</span>
+        <span class="role-chip">Подсобный рабочий</span>
+        <span class="role-chip">Грузчик</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONDITIONS -->
+  <section class="section-dark" id="conditions">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Что получает твой друг</p>
+        <h2>Условия, о которых приятно рассказывать</h2>
+        <p>Чем лучше условия — тем проще уговорить человека выйти на смены и тем быстрее ты получишь свои 10 000 ₽.</p>
+      </div>
+      <div class="cond-grid">
+        <div class="cond-card">
+          <svg class="cond-icon" viewBox="0 0 34 34" aria-hidden="true"><rect x="14" y="4" width="6" height="18" rx="3" fill="none" stroke="#F4BE1E" stroke-width="2"/><circle cx="17" cy="26" r="6" fill="none" stroke="#F4BE1E" stroke-width="2"/><rect x="15.5" y="10" width="3" height="12" fill="#F4BE1E"/></svg>
+          <h3>Комфортная температура</h3>
+          <p>На складе поддерживается ровный температурный режим — не жарко летом и не холодно зимой.</p>
+        </div>
+        <div class="cond-card">
+          <svg class="cond-icon" viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="12" width="22" height="12" rx="2" fill="none" stroke="#F4BE1E" stroke-width="2"/><rect x="25" y="16" width="7" height="8" fill="none" stroke="#F4BE1E" stroke-width="2"/><circle cx="9" cy="26" r="3" fill="#F4BE1E"/><circle cx="24" cy="26" r="3" fill="#F4BE1E"/></svg>
+          <h3>Бесплатный корпоративный развоз</h3>
+          <p>Автобусы забирают сотрудников от удобных точек города и привозят обратно после смены.</p>
+        </div>
+        <div class="cond-card">
+          <svg class="cond-icon" viewBox="0 0 34 34" aria-hidden="true"><rect x="4" y="16" width="26" height="12" rx="2" fill="none" stroke="#F4BE1E" stroke-width="2"/><path d="M4 16 V11 C4 9 6 8 8 8 H16" stroke="#F4BE1E" stroke-width="2" fill="none"/><circle cx="12" cy="28" r="2" fill="#F4BE1E"/><circle cx="24" cy="28" r="2" fill="#F4BE1E"/></svg>
+          <h3>Вахта с проживанием</h3>
+          <p>Для иногородних — вахта от 15 дней с бесплатным проживанием в хостеле рядом со складом.</p>
+        </div>
+        <div class="cond-card">
+          <svg class="cond-icon" viewBox="0 0 34 34" aria-hidden="true"><rect x="4" y="5" width="26" height="24" rx="2" fill="none" stroke="#F4BE1E" stroke-width="2"/><path d="M4 12 H30 M11 5 V9 M23 5 V9" stroke="#F4BE1E" stroke-width="2"/></svg>
+          <h3>График под тебя</h3>
+          <p>Можно выходить всего от 2 смен в неделю — удобно совмещать с учёбой, семьёй или другой работой.</p>
+        </div>
+        <div class="cond-card">
+          <svg class="cond-icon" viewBox="0 0 34 34" aria-hidden="true"><rect x="4" y="9" width="26" height="17" rx="2" fill="none" stroke="#F4BE1E" stroke-width="2"/><circle cx="24" cy="17.5" r="2.5" fill="#F4BE1E"/><path d="M4 14 H30" stroke="#F4BE1E" stroke-width="2"/></svg>
+          <h3>Фиксированная и сдельная оплата</h3>
+          <p>Есть гарантированная ставка за смену плюс доплата за выработку — чем быстрее работаешь, тем больше получаешь.</p>
+        </div>
+        <div class="cond-card">
+          <svg class="cond-icon" viewBox="0 0 34 34" aria-hidden="true"><rect x="6" y="4" width="22" height="26" rx="2" fill="none" stroke="#F4BE1E" stroke-width="2"/><path d="M11 12 H23 M11 18 H23 M11 24 H18" stroke="#F4BE1E" stroke-width="2"/></svg>
+          <h3>Без опыта и резюме</h3>
+          <p>Оформление занимает один день, специальное образование или стаж на складе не нужны.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO FITS -->
+  <section class="section-cream" id="who">
+    <div class="wrap who-wrap">
+      <div>
+        <p class="kicker">Кому подходит роль агента</p>
+        <h2>Тебе не нужно быть рекрутером, чтобы зарабатывать на этом</h2>
+        <ul class="who-list">
+          <li>
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="none" stroke="#96703F" stroke-width="2"/><path d="M6 11 L9.5 14.5 L16 7.5" fill="none" stroke="#96703F" stroke-width="2"/></svg>
+            <span>Студентам — рассказываешь одногруппникам, которые ищут подработку.</span>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="none" stroke="#96703F" stroke-width="2"/><path d="M6 11 L9.5 14.5 L16 7.5" fill="none" stroke="#96703F" stroke-width="2"/></svg>
+            <span>Родителям в декрете — предлагаешь вариант соседям и знакомым мамам.</span>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="none" stroke="#96703F" stroke-width="2"/><path d="M6 11 L9.5 14.5 L16 7.5" fill="none" stroke="#96703F" stroke-width="2"/></svg>
+            <span>Тем, кто уже работал на складе — знаешь условия изнутри и можешь честно их описать.</span>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="none" stroke="#96703F" stroke-width="2"/><path d="M6 11 L9.5 14.5 L16 7.5" fill="none" stroke="#96703F" stroke-width="2"/></svg>
+            <span>Всем, у кого просто есть телефон и знакомые, которым нужна работа.</span>
+          </li>
+        </ul>
+        <div class="hero-actions" style="margin-top:30px;">
+          <a class="btn btn-yellow" href="http://t.me/rabota_referal_bot" target="_blank" rel="noopener">Начать приводить друзей</a>
+          <a class="btn btn-outline-dark" href="https://wa.me/79960387729" target="_blank" rel="noopener">Написать в WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <svg viewBox="0 0 380 320" aria-hidden="true">
+          <ellipse cx="190" cy="300" rx="140" ry="14" fill="rgba(28,27,24,0.1)"/>
+          <!-- person A -->
+          <circle cx="120" cy="90" r="26" fill="#232320"/>
+          <path d="M70 220 C70 160 90 130 120 130 C150 130 170 160 170 220 Z" fill="#96703F"/>
+          <!-- person B -->
+          <circle cx="250" cy="100" r="24" fill="#C89B65"/>
+          <path d="M205 225 C205 168 224 140 250 140 C276 140 295 168 295 225 Z" fill="#232320"/>
+          <!-- money arrow -->
+          <path d="M150 165 C180 150 210 150 235 165" stroke="#F4BE1E" stroke-width="3" fill="none" stroke-dasharray="6 6"/>
+          <g transform="translate(178,120)">
+            <circle r="20" fill="#F4BE1E"/>
+            <text x="0" y="6" text-anchor="middle" font-family="Oswald, sans-serif" font-size="20" font-weight="700" fill="#1C1B18">₽</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-cream-2" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Частые вопросы</p>
+        <h2>Всё, что обычно спрашивают агенты</h2>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>Мне самому нужно работать на складе?<span class="faq-plus"></span></summary>
+          <p>Нет. Ты можешь ни разу не выйти на смену и при этом зарабатывать — доход строится только на людях, которых ты привёл.</p>
+        </details>
+        <details>
+          <summary>Когда именно приходят деньги?<span class="faq-plus"></span></summary>
+          <p>Выплата 10 000 ₽ поступает на карту после того, как приведённый тобой человек отработал 10 смен на складе-партнёре.</p>
+        </details>
+        <details>
+          <summary>Есть ли ограничение на число друзей?<span class="faq-plus"></span></summary>
+          <p>Нет верхнего предела: 5 друзей — это 50 000 ₽, 10 друзей — 100 000 ₽, и так далее за каждого следующего.</p>
+        </details>
+        <details>
+          <summary>Что если друг уйдёт раньше 10 смен?<span class="faq-plus"></span></summary>
+          <p>Выплата привязана к отработанным сменам. Если человек не доработал до 10 смен, ты всегда можешь привести следующего кандидата.</p>
+        </details>
+        <details>
+          <summary>На какой склад попадёт мой друг?<span class="faq-plus"></span></summary>
+          <p>Это зависит от города и открытых вакансий на момент оформления — это может быть СДЭК, Лемана ПРО, ДНС или ВкусВилл.</p>
+        </details>
+        <details>
+          <summary>Как оформить друга на работу?<span class="faq-plus"></span></summary>
+          <p>Отправляешь ему ссылку на бота t.me/rabota_referal_bot, он проходит короткую анкету, дальше с ним связывается менеджер.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="hazard" aria-hidden="true" style="margin-bottom:0;"></div>
+    <div class="wrap" style="padding-top:56px;">
+      <h2>Первого друга можно привести уже сегодня</h2>
+      <p>Открой бота, отправь ссылку знакомому — и жди 10 000 ₽ на карту после его 10 смен.</p>
+      <div class="final-actions">
+        <a class="btn btn-yellow" href="http://t.me/rabota_referal_bot" target="_blank" rel="noopener">Открыть бота в Telegram</a>
+        <a class="btn btn-outline" href="https://wa.me/79960387729" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+      <p class="final-contacts">Бот: <a href="http://t.me/rabota_referal_bot" target="_blank" rel="noopener">t.me/rabota_referal_bot</a> · MAX и WhatsApp: <a href="tel:+79960387729">+7 996 038‑77‑29</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <span class="footer-brand">Приведи друга на склад</span>
+      <div class="footer-links">
+        <a href="#how">Как это работает</a>
+        <a href="#calc">Заработок</a>
+        <a href="#warehouses">Склады</a>
+        <a href="#conditions">Условия</a>
+        <a href="#faq">Вопросы</a>
+      </div>
+    </div>
+    <p>Партнёрская программа для агентов, приводящих сотрудников на склады СДЭК, Лемана ПРО, ДНС и ВкусВилл. Регистрация и выплаты — через бота t.me/rabota_referal_bot. Связь: MAX и WhatsApp +7 996 038‑77‑29.</p>
+  </div>
+</footer>
+
+<div class="floating-cta" id="floatingCta">
+  <span>10 000 ₽ за друга</span>
+  <a class="btn btn-yellow btn-sm" href="http://t.me/rabota_referal_bot" target="_blank" rel="noopener">В бота</a>
+</div>
+
+<script>
+  // earnings calculator
+  var range = document.getElementById('friendsRange');
+  var friendsValue = document.getElementById('friendsValue');
+  var result = document.getElementById('calcResult');
+  var chips = document.querySelectorAll('.milestone-chip');
+
+  function pluralFriends(n){
+    var mod10 = n % 10, mod100 = n % 100;
+    if(mod10 === 1 && mod100 !== 11) return 'друга';
+    if([2,3,4].indexOf(mod10) !== -1 && [12,13,14].indexOf(mod100) === -1) return 'друзей';
+    return 'друзей';
+  }
+  function formatMoney(n){
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽';
+  }
+  function update(){
+    var n = parseInt(range.value, 10);
+    friendsValue.textContent = n + ' ' + pluralFriends(n);
+    result.textContent = formatMoney(n * 10000);
+    chips.forEach(function(chip){
+      chip.classList.toggle('active', parseInt(chip.dataset.n,10) === n);
+    });
+  }
+  range.addEventListener('input', update);
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      range.value = chip.dataset.n;
+      update();
+    });
+  });
+  update();
+
+  // floating mobile cta after hero
+  var floating = document.getElementById('floatingCta');
+  var hero = document.querySelector('.hero');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        floating.classList.toggle('show', !entry.isIntersecting);
+      });
+    }, {threshold:0});
+    io.observe(hero);
+  }
+</script>
+
+</body>
+</html>
