@@ -89,6 +89,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--yellow);outline-off
 }
 .vhero-actions{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;}
 .vhero-contacts{margin-top:16px;font-size:13.5px;color:rgba(244,239,227,0.6);}
+.vhero-contacts a{text-decoration:underline;text-underline-offset:3px;}
 
 /* city switcher */
 .city-switch{
